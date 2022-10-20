@@ -1,7 +1,7 @@
 # SegdProcessMasw
 ## Description
 脚本方法主要参考Park et al. 1998.，其中source文件夹为segy数据，主程序为main.py
-## API Reference
+## function Reference
 ### segd_analysis.get_dispersion(st_new,dx,cmin,cmax,dc,fmax)
 ```
 st_new 道集数据，以obspy读取数据为准
