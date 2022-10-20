@@ -1,5 +1,5 @@
-SegdProcessMasw
-脚本方法主要参考Park et al. 1998.，其中source文件夹为segy数据，运行脚本main.py
+# SegdProcessMasw
+# 脚本方法主要参考Park et al. 1998.，其中source文件夹为segy数据，运行脚本main.py
 ###
 # segd_analysis.get_dispersion(st_new,dx,cmin,cmax,dc,fmax)
 # st_new 道集数据，以obspy读取数据为准
@@ -19,6 +19,6 @@ SegdProcessMasw
 
 
 ###
-reference
+# reference
 The phase shift method described in: Park, C.B., Miller, R.D. and Xia, J., 1998, January. Imaging dispersion curves of surface waves on multi-channel record. In 1998 SEG Annual Meeting. Society of Exploration Geophysicists.
 https://github.com/luan-th-nguyen/PyDispersion
