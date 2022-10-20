@@ -1,7 +1,7 @@
 # SegdProcessMasw
 # 脚本方法主要参考Park et al. 1998.，其中source文件夹为segy数据，运行脚本main.py
 ######
-# segd_analysis.get_dispersion(st_new,dx,cmin,cmax,20.,12)
+# segd_analysis.get_dispersion(st_new,dx,cmin,cmax,dc,fmax)
 # st_new 道集数据，以obspy读取数据为准
 # dx 道间距
 # cmin,cmax 最小，最大相速度m/s
