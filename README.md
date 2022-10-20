@@ -16,6 +16,7 @@ fmax 最大频率
 ShotGather 道集数据，以obspy读取的segd文件为准，需要包含完整的检波点坐标与震源坐标数据
 SourceTrace 新截取的道集中的震源位置
 CutTraceNum 新截取的道集中总道数
+返回一个新的道集
 ```
 ###
 
