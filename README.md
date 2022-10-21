@@ -20,6 +20,7 @@ CutTraceNum 新截取的道集中总道数
 ```
 ###
 
-## reference
+## Reference
 The phase shift method described in: Park, C.B., Miller, R.D. and Xia, J., 1998, January. Imaging dispersion curves of surface waves on multi-channel record. In 1998 SEG Annual Meeting. Society of Exploration Geophysicists.
 ### https://github.com/luan-th-nguyen/PyDispersion
+### https://github.com/claudiodsf/read_segd
