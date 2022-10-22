@@ -27,9 +27,11 @@ CutTraceNum 新截取的道集中总道数
 ![alt text](./00000001.00000192.jpg)
 
 
-## Reference
+## Reference paper
 Chen Si, Gao Rui, Lu Zhanwu, Zhang Xinyan, Li Wenhui, Liang Yao, Cheng Yongzhi, Wang Guangwen. Shallow shear wave velocity structure of the Dongshan sag area using surface wave data in a deep reflection profile of the Yuanmou area of Yunnan province, China. Tectonophysics. 2022, 843: 229606. https://doi.org/10.1016/j.tecto.2022.229606 
 
 The phase shift method described in: Park, C.B., Miller, R.D. and Xia, J., 1998, January. Imaging dispersion curves of surface waves on multi-channel record. In 1998 SEG Annual Meeting. Society of Exploration Geophysicists.
+
+## Reference Code
 #### https://github.com/luan-th-nguyen/PyDispersion
 #### https://github.com/claudiodsf/read_segd
