@@ -23,9 +23,14 @@ segd_analysis.F_vr_folder(save_img,segy_path,masw_para,gauss_opt,plotsize)
 ### end ###
 
 ### one shot-gather data MASW for segd only ###
-ShotGatherPath = 'source_segd/00000001.00000192.segd'
-st = segd_analysis.read_segd(ShotGatherPath)
-st_new = segd_analysis.source_xkm(st,36,72) # cut the nearly trace of source for segd data (ShotGather,SourceTrace,CutTraceNum)
+# ShotGatherPath = 'source_segd/00000001.00000192.segd'
+# st = segd_analysis.read_segd(ShotGatherPath)
+# st_new = segd_analysis.source_xkm(st,36,72) # cut the nearly trace of source for segd data (ShotGather,SourceTrace,CutTraceNum)
+import pickle
+save_path = 'source_segd/segd_pack.dump' # 因为segd文件保密，所以只上传了一个内存转储的文件
+segdfile = open(save_path,'rb')
+st_new = pickle.load(segdfile)
+segdfile.close()
 f,c,img,fmax_idx,U,t = segd_analysis.get_dispersion(st_new,40,10.,4000.0,20.,12)
 img = img / img.max()
 img = 1 - segd_analysis.gauss_func(img,0,1,1)
