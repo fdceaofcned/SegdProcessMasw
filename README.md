@@ -21,6 +21,8 @@ CutTraceNum 新截取的道集中总道数
 ###
 
 ### 地震波形
+figure = segd_analysis.plot_sesmic_wave(st_new,48,6,10) # 依赖库utm，48是zone号，用于将投影转换为经纬度
+plt.show()
 ![alt text](./00000001.00000192.segd.png)
 
 ### 频散特征
