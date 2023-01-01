@@ -109,56 +109,6 @@ def source_locked(st_new,save_path,locked_source): # 锁定离检波点最近的
         locked_file.append(file_list[index_code])
         locked_code.append(source_num[index_code])
     return locked_file,locked_code
-# 文件创建与写入
-def create_str_to_txt(path_file,wave_type,str_data):
-    timestamp = time.strftime(".%Y.%m.%d-%H.%M.%S", time.localtime())
-    path_file_name = path_file+'/'+wave_type+timestamp+'.txt'
-    f = open(path_file_name,'w')
-    f.write(str_data)
-    return print('document writed')
-# S文件读取
-def cols_row(raw_data,definition):
-    item = [s for s in raw_data if definition in s][0]
-    item_divide = cut_str(item,definition)[1]
-    cols_str = cut_str(item_divide,' ')[0]
-    cols_num = cut_str(cols_str,'-')
-    cols_int = list(map(int,cols_num))
-    return cols_int
-def check_sps_S(S_file_path): # 检查S文件
-    f = open(S_file_path, "r")
-    raw_data = f.readlines()
-    name_line = len([s for s in raw_data if 'H00' in s])
-    info_line = len([s for s in raw_data if 'H26' in s])
-    head_num = name_line + info_line
-    record0 = cols_row(raw_data,'Record identification')
-    record1 = cols_row(raw_data,'Line name')
-    record2 = cols_row(raw_data,'Point number')
-    record3 = cols_row(raw_data,'Point index')
-    record4 = cols_row(raw_data,'Point code')
-    record5 = cols_row(raw_data,'Static correction')
-    record6 = cols_row(raw_data,'Point depth')
-    record7 = cols_row(raw_data,'Seismic datum')
-    record8 = cols_row(raw_data,'Uphole time')
-    record9 = cols_row(raw_data,'Water depth')
-    record10 = cols_row(raw_data,'Map grid easting')
-    record11 = cols_row(raw_data,'Map grid northing')
-    record12 = cols_row(raw_data,'Surface elevation')
-    record13 = cols_row(raw_data,'Day of year')
-    record14 = cols_row(raw_data,'Time hhmmss')
-    cols_lsit = [record0,record1,record2,record3,record4,record5,record6,record7,record8,record9,record10,record11,record12,record13,record14,]
-    f.close()
-    print('read S file of connon position')
-    return cols_lsit,raw_data,head_num
-def extract_S_file(S_file_path):
-    cols_lsit,raw_data,head_num = check_sps_S(S_file_path)
-    new_data = raw_data[head_num:]
-    connon_num,connon_x,connon_y,connon_z = [],[],[],[]
-    for i in range(0,len(new_data),1):
-        connon_num.append(int(new_data[i][cols_lsit[2][0]-1:cols_lsit[2][1]])) # 按位取出炮点编号
-        connon_x.append(float(new_data[i][cols_lsit[11][0]-1:cols_lsit[11][1]])) # 取出南北坐标
-        connon_y.append(float(new_data[i][cols_lsit[10][0]-1:cols_lsit[10][1]])) # 取出东西坐标
-        connon_z.append(float(new_data[i][cols_lsit[12][0]-1:cols_lsit[12][1]])) # 取出高程
-    return connon_num,connon_x,connon_y,connon_z
 def output_source_info(list_group,save_path): # 输出[[],[],[],[],[]]形式专用函数
     output = open(save_path,'w',encoding='utf-8')
     for i in range(0,len(list_group[0]),1):
@@ -203,21 +153,6 @@ def get_line(file, nums_line): # 封装读取txt行函数（文件，指定行�
 def cut_str(str_aim,key): # 封装切割函数（字符串，分隔符）
     res = list(filter(None,str_aim.split(key))) # 按空格数据切割filter的第一个参数为空的时候，会返回第二个参数中非空的值。
     return res
-# 频散曲线拾取
-def dispersion_curve(base):
-    v_phase = 2*np.pi*np.multiply(base[1],(1/base[0]))
-    return v_phase
-# base = np.max(h_kf,axis=0) # 拾取对应最大值
-def dispersion_curve_out(h_kf,num_f):
-    h_kf_item = np.argsort(h_kf,axis=1)
-    base_1 = mat(np.where(h_kf_item==num_f-1))+1 # 拾取基阶频散
-    base_a = dispersion_curve(base_1)
-    base_2 = mat(np.where(h_kf_item==num_f-2))+1 # 拾取一阶频散
-    base_b = dispersion_curve(base_2)
-    base_3 = mat(np.where(h_kf_item==num_f-3))+1 # 拾取二阶频散
-    base_c = dispersion_curve(base_3)
-    #freq = mat(h_kf)[0]
-    return base_a, base_b, base_c
 # 频散能量图绘制
 def draw_fk(im,ax,f,c,img,fmax_idx):
     timestamp = time.strftime(".%Y.%m.%d-%H.%M.%S", time.localtime())
