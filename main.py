@@ -4,13 +4,13 @@ import segd_analysis
 ### one shot-gather data MASW ### 
 ShotGatherPath = 'source/00000001.00000192.segd.sgy'
 st_new = obspy.read(ShotGatherPath)
-f,c,img,fmax_idx,U,t = segd_analysis.get_dispersion(st_new,40,10.,4000.0,20.,12)
+f,c,img,fmax_idx,U,t = segd_analysis.get_dispersion(st_new,40,10.,2000.0,20.,8)
 img = img / img.max()
 img = 1 - segd_analysis.gauss_func(img,0,1,1)
 img = img / img.max()
 im,ax = plt.subplots(figsize=(8,4.5))
 fvr_pic,timestamp = segd_analysis.draw_fk(im,ax,f,c,img,fmax_idx)
-fvr_pic.savefig('00000001.00000192.svg')
+fvr_pic.savefig('00000001.00000192.jpg')
 plt.close()
 ### end ###
 
@@ -29,7 +29,7 @@ img = 1 - segd_analysis.gauss_func(img,0,1,1)
 img = img / img.max()
 im,ax = plt.subplots(figsize=(8,4.5))
 fvr_pic,timestamp = segd_analysis.draw_fk(im,ax,f,c,img,fmax_idx)
-fvr_pic.savefig('00000001.00000192.svg')
+fvr_pic.savefig('00000001.00000192.png')
 plt.close()
 ### end ###
 
