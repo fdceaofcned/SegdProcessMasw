@@ -12,7 +12,7 @@ CutTraceNum 新截取的道集中总道数
 返回一个新的道集
 ```
 ### 地震波形 (seismic waves form)
-figure = segd_analysis.plot_sesmic_wave(st_new,48,6,10) # 依赖库utm，48是zone号，用于将投影转换为经纬度
+### figure = segd_analysis.plot_sesmic_wave(st_new,48,6,10,(7.3,4.1)) # 依赖库utm，48是zone号，用于将投影转换为经纬度
 ![alt text](./00000001.00000192.segd.png)
 ### f,c,img,fmax_idx,U,t = segd_analysis.get_dispersion(st_new,dx,cmin,cmax,dc,fmax)
 ```
